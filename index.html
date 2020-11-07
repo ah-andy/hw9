@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Set List</title>
+ </head>
+  <meta charset="UTF-8">
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"> </script>
+<script>
+
+    $(function() {
+
+
+   var songs = [];
+
+   $.getJSON('songs.json', function(data){
+       $.each(data.song, function(x, y){
+          var row = "<tr>" + "<td>" + y.title + "</td>" +
+           "<td>" + y.artist + "</td>" + "<td>" + y.genre + "</td>" + "<td>" + y.year + "</td>" + "</tr>"
+           $(row).appendTo("#mytable tbody");
+     });
+
+   });
+
+});
+</script>
+</head>
+
+<body>
+
+<div class="wrap">
+<div class="profile">
+   <table id= "mytable" border="1">
+  <thead>
+            <th>Title</th>
+            <th>Artist</th>
+            <th>Genre</th>
+            <th>Year</th>
+        </thead>
+      <tbody>
+
+       </tbody>
+   </table>
+
+</div>
+</div>
+
+</body>
+</html>
+
+
+
+
+
