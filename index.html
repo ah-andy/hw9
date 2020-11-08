@@ -5,47 +5,53 @@
  </head>
   <meta charset="UTF-8">
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"> </script>
-<script>
-
-    $(function() {
-
-
-   var songs = [];
-
-   $.getJSON('songs.json', function(data){
-       $.each(data.song, function(x, y){
-          var row = "<tr>" + "<td>" + y.title + "</td>" +
-           "<td>" + y.artist + "</td>" + "<td>" + y.genre + "</td>" + "<td>" + y.year + "</td>" + "</tr>"
-           $(row).appendTo("#mytable tbody");
-     });
-
-   });
-
-});
-</script>
-</head>
 
 <body>
 
-<div class="wrap">
+<div class="wrapper">
 <div class="profile">
    <table id= "mytable" border="1">
-  <thead>
+        <tr>
             <th>Title</th>
             <th>Artist</th>
             <th>Genre</th>
             <th>Year</th>
-        </thead>
-      <tbody>
-
-       </tbody>
+        </tr>
+      
    </table>
 
 </div>
 </div>
 
 </body>
+
+
+<script>
+
+    $(function() {
+
+   $.getJSON('songs.json', function(data){
+     var songs = "";
+       $.each(data, function(key, value){
+          mytable += '<tr>';
+          mytable += '<td>' + value.Title + '<td>';
+          mytable += '<td>' + value.Artist + '<td>';
+          mytable += '<td>' + value.Genre + '<td>';
+          mytable += '<td>' + value.Year + '<td>';
+          mytable += '</tr>';
+     });
+     $('#mytable').append(mytable);
+   });
+
+});
+</script>
+</head>
+
+
 </html>
+
+
+
 
 
 
